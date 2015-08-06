@@ -32,14 +32,7 @@ try:
     FileNotFoundError
 except NameError:
     # Python 2
-    class FileNotFoundError(IOError):
-        def __init__(self, message=None, *args):
-            super(FileNotFoundError, self).__init__(args)
-            self.message = message
-            self.errno = errno.ENOENT
-
-        def __str__(self):
-            return self.message or os.strerror(self.errno)
+    FileNotFoundError = IOError
 
 
 LOGLEVEL=logging.DEBUG
